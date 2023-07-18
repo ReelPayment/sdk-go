@@ -1,4 +1,4 @@
-module reelpay
+module github.com/ReelPayment/sdk-go
 
 go 1.16
 
