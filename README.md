@@ -21,9 +21,7 @@ Installation
 ------------
 
 ```
-import (
-    reelpay "github.com/ReelPayment/sdk-go"
-)
+go get github.com/ReelPayment/sdk-go
 ```
 
 Configuration
