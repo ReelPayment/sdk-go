@@ -38,7 +38,7 @@ func main()  {
         AppID: "eqrbntqbi5uqvkpr",
         AppKey: "XhAlbICW10VJnWGruPL0NSnvb6946JDQ",
     }
-    res := transaction.Pay(&reelpay.EntrustPay{
+    res := transaction.EntrustPay(&reelpay.EntrustPay{
         OutTradeNo: "jSWfrolOTdsadcYuUwkJbdw9IJUBeV",
         Symbol:     "USD",
         Amount:     "1.2",
