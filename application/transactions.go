@@ -8,7 +8,7 @@
  */
 package application
 
-import "reelpay/httpRequest"
+import "github.com/ReelPayment/sdk-go/httpRequest"
 
 type Transactions struct {
 	AppID  string
