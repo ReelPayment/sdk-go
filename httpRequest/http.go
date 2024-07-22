@@ -16,7 +16,7 @@ import (
 	"time"
 )
 
-const APIURL = "https://api.reelpay.com"
+const APIURL = "https://api.reelpay.com/api"
 
 var httpCodeMap = map[int]error{
 	http.StatusUnauthorized:  errors.New("Unauthorized"),

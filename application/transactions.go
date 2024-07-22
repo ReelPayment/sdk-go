@@ -8,54 +8,62 @@
  */
 package application
 
-import "reelpay/httpRequest"
+import (
+	"github.com/ReelPayment/sdk-go/httpRequest"
+)
 
 type Transactions struct {
-	AppID  string
-	AppKey string
+	appID  string
+	appKey string
 }
 
 func NewTransactions(appID, appKey string) *Transactions {
-	return &Transactions{AppID: appID, AppKey: appKey}
+	return &Transactions{appID: appID, appKey: appKey}
 }
 
-func (t *Transactions) Pay(req *PayRequest) (*TransactionResponse, error) {
-	response := new(TransactionResponse)
-	err := httpRequest.Request("/v1/transactions/pay", t.AppID, t.AppKey, req, response)
+func (t *Transactions) Pay(req *PayRequest) (TransactionResponse, error) {
+	response := TransactionResponse{}
+	err := httpRequest.Request("/v1/transactions/pay", t.appID, t.appKey, req, &response)
 	return response, err
 }
 
-func (t *Transactions) EntrustPay(req *EntrustRequest) (*EntrustResponse, error) {
-	response := new(EntrustResponse)
-	err := httpRequest.Request("/v1/transactions/entrust", t.AppID, t.AppKey, req, response)
+func (t *Transactions) EntrustPay(req EntrustRequest) (EntrustResponse, error) {
+	response := EntrustResponse{}
+	err := httpRequest.Request("/v1/transactions/entrust", t.appID, t.appKey, req, &response)
 	return response, err
 }
 
-func (t *Transactions) Amount(req *AmountRequest) (*AmountResponse, error) {
-	response := new(AmountResponse)
-	err := httpRequest.Request("/v1/transactions/amount", t.AppID, t.AppKey, req, response)
+func (t *Transactions) OTCEntrustPay(req OTCEntrustRequest) (EntrustResponse, error) {
+	response := EntrustResponse{}
+	err := httpRequest.Request("/v1/transactions/otc/entrust", t.appID, t.appKey, req, &response)
 	return response, err
 }
 
-func (t *Transactions) Transaction(req *TransactionRequest) (*TransactionResponse, error) {
-	response := new(TransactionResponse)
-	err := httpRequest.Request("/v1/transactions", t.AppID, t.AppKey, req, response)
+func (t *Transactions) Amount(req AmountRequest) (AmountResponse, error) {
+	response := AmountResponse{}
+	err := httpRequest.Request("/v1/transactions/amount", t.appID, t.appKey, req, &response)
 	return response, err
 }
 
-func (t *Transactions) Close(req *TransactionRequest) (*Response, error) {
-	response := new(Response)
-	err := httpRequest.Request("/v1/transactions/close", t.AppID, t.AppKey, req, response)
-	return response, err
-}
-func (t *Transactions) Refund(req *RefundRequest) (*Response, error) {
-	response := new(Response)
-	err := httpRequest.Request("/v1/transactions/refund", t.AppID, t.AppKey, req, response)
+func (t *Transactions) Transaction(req TransactionRequest) (TransactionResponse, error) {
+	response := TransactionResponse{}
+	err := httpRequest.Request("/v1/transactions", t.appID, t.appKey, req, &response)
 	return response, err
 }
 
-func (t *Transactions) Currency(req *CurrencyRequest) (*CurrencyResponse, error) {
-	response := new(CurrencyResponse)
-	err := httpRequest.Request("/v1/transactions/currency", t.AppID, t.AppKey, req, response)
+func (t *Transactions) Close(req TransactionRequest) (Response, error) {
+	response := Response{}
+	err := httpRequest.Request("/v1/transactions/close", t.appID, t.appKey, req, &response)
+	return response, err
+}
+func (t *Transactions) Refund(req RefundRequest) (Response, error) {
+	response := Response{}
+	err := httpRequest.Request("/v1/transactions/refund", t.appID, t.appKey, req, &response)
+	return response, err
+}
+
+func (t *Transactions) Currency(req CurrencyRequest) (CurrencyResponse, error) {
+	response := CurrencyResponse{}
+	err := httpRequest.Request("/v1/transactions/currency", t.appID, t.appKey, req, &response)
 	return response, err
 }

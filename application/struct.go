@@ -14,19 +14,27 @@ type Response struct {
 }
 
 type PayRequest struct {
-	OutTradeNo string `json:"out_trade_no"`
-	CurrencyID string `json:"currency_id"`
-	FiatName   string `json:"fiat_name"`
-	FiatAmount string `json:"fiat_amount"`
+	OutTradeNo  string `json:"out_trade_no"`
+	CurrencyID  string `json:"currency_id"`
+	FiatName    string `json:"fiat_name"`
+	FiatAmount  string `json:"fiat_amount"`
+	CallbackUrl string `json:"callback_url"`
 }
 
 type EntrustRequest struct {
-	OutTradeNo string `json:"out_trade_no"`
-	Symbol     string `json:"symbol"`
-	Amount     string `json:"amount"`
-	Name       string `json:"name"`
-	Image      string `json:"image"`
-	Describe   string `json:"describe"`
+	OutTradeNo  string `json:"out_trade_no"`
+	Symbol      string `json:"symbol"`
+	Amount      string `json:"amount"`
+	Name        string `json:"name"`
+	Image       string `json:"image"`
+	Describe    string `json:"describe"`
+	CallbackUrl string `json:"callback_url"`
+}
+
+type OTCEntrustRequest struct {
+	OutTradeNo  string `json:"out_trade_no"`
+	Amount      string `json:"amount"`
+	CallbackUrl string `json:"callback_url"`
 }
 
 type EntrustResponse struct {
