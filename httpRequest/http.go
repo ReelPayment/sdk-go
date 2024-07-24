@@ -11,12 +11,13 @@ package httpRequest
 import (
 	"encoding/json"
 	"errors"
+	"fmt"
 	"github.com/go-resty/resty/v2"
 	"net/http"
 	"time"
 )
 
-const APIURL = "https://api.reelpay.com/api"
+var ReelPayAPIURL = "https://api.reelpay.com/api"
 
 var httpCodeMap = map[int]error{
 	http.StatusUnauthorized:  errors.New("Unauthorized"),
@@ -57,7 +58,7 @@ func Request(path, appID, appKey string, body interface{}, response interface{})
 	hClient.Client.SetHeader(AppidHeader, appID)
 	hClient.Client.SetHeader(SignHeader, cover.Sign)
 	hClient.Request.SetBody(cover.Body)
-	res, err := hClient.Request.Post(APIURL + path)
+	res, err := hClient.Request.Post(fmt.Sprintf("%s%s", ReelPayAPIURL, path))
 	if err != nil {
 		return err
 	}
