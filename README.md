@@ -1,6 +1,6 @@
 <p align="center">
     <a href="https://reelpay.com/" target="_blank" rel="external">
-        <img src="https://github.com/ReelPayment/sdk-php/blob/main/logo.png" height="100px">
+        <img src="https://github.com/ReelPayment/sdk-go/blob/main/logo.png" height="100px">
     </a>
     <h1 align="center">ReelPay SDK-GO</h1>
     <br>
